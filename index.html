@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TOTALE KONTROLLE</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background-color: #000000;
+      color: #FFFFFF;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      font-size: 18px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+
+    .warning-banner {
+      background: linear-gradient(90deg, #b91c1c, #dc2626);
+      color: #FFFFFF;
+      text-align: center;
+      padding: 14px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      line-height: 1.5;
+    }
+
+    .section { padding: 48px 24px; }
+    .section--alt {
+      background-color: #FFFFFF;
+      color: #000000;
+    }
+    .section--alt h1,
+    .section--alt h2 {
+      color: #000000;
+    }
+    .section--alt .subtitle {
+      color: #666666;
+    }
+    .section--alt .testimonial {
+      border-color: rgba(0,0,0,0.15);
+    }
+    .section--alt .testimonial__text {
+      color: rgba(0,0,0,0.75);
+    }
+    .section--alt .testimonial__title {
+      color: #000000;
+    }
+    .section--alt .benefits-list li::before {
+      color: #16a34a;
+    }
+    .section--alt .guarantee {
+      color: rgba(0,0,0,0.5);
+    }
+    .section--alt .negative-list li::before {
+      color: #dc2626;
+    }
+    .section__inner { max-width: 780px; margin: 0 auto; }
+
+    h1 { font-size: 32px; font-weight: 700; line-height: 1.3; margin-bottom: 24px; text-align: center; }
+    h2 { font-size: 26px; font-weight: 700; line-height: 1.35; margin-bottom: 20px; }
+    p { margin-bottom: 20px; }
+
+    .subtitle { text-align: center; color: #999999; font-size: 16px; margin-bottom: 32px; }
+
+    .benefits-list { list-style: none; padding: 0; margin: 24px 0; }
+    .benefits-list li { padding: 12px 0 12px 36px; position: relative; line-height: 1.6; }
+    .benefits-list li::before {
+      content: "\2713";
+      position: absolute;
+      left: 0;
+      top: 12px;
+      color: #22c55e;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .negative-list { list-style: none; padding: 0; margin: 24px 0; }
+    .negative-list li { padding: 12px 0 12px 36px; position: relative; line-height: 1.6; }
+    .negative-list li::before {
+      content: "\2717";
+      position: absolute;
+      left: 0;
+      top: 12px;
+      color: #ef4444;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 32px 0;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .comparison-table td {
+      padding: 16px 20px;
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.5;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .section--alt .comparison-table td {
+      border-color: rgba(0,0,0,0.15);
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(34,197,94,0.1), rgba(34,197,94,0.05));
+      border: 1px solid rgba(34,197,94,0.3);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 32px 0;
+      text-align: center;
+    }
+    .highlight-box p { margin-bottom: 8px; }
+    .highlight-box p:last-child { margin-bottom: 0; }
+
+    .separator {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      margin: 32px 0;
+    }
+    .section--alt .separator {
+      border-top-color: rgba(0,0,0,0.15);
+    }
+
+    .star { color: #facc15; }
+
+    .testimonial {
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 32px 0;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .testimonial__avatar { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+    .testimonial__content { flex: 1; }
+    .testimonial__name { font-weight: 700; font-size: 16px; margin-bottom: 8px; }
+    .testimonial__title { font-weight: 700; font-size: 18px; margin-bottom: 16px; text-transform: uppercase; }
+    .testimonial__text { font-size: 16px; line-height: 1.6; color: rgba(255,255,255,0.85); font-style: italic; }
+
+    .cta-section { text-align: center; padding: 40px 0 16px; }
+    .cta-accept {
+      display: block;
+      width: 100%;
+      padding: 20px 40px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #15803d, #16a34a);
+      color: #FFFFFF;
+      font-size: 20px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 0 30px rgba(34,197,94,0.35), 0 0 60px rgba(34,197,94,0.15);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      letter-spacing: 0.3px;
+      line-height: 1.4;
+      font-family: inherit;
+    }
+    .cta-accept:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 40px rgba(34,197,94,0.5), 0 0 80px rgba(34,197,94,0.2);
+    }
+    .cta-decline {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px;
+      background: none;
+      border: none;
+      color: #999999;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: underline;
+      font-family: inherit;
+    }
+    .cta-decline:hover { color: #cccccc; }
+
+    .guarantee { text-align: center; padding: 16px 0; color: rgba(255,255,255,0.6); font-size: 14px; }
+
+    @media (max-width: 640px) {
+      body { font-size: 16px; }
+      h1 { font-size: 26px; }
+      h2 { font-size: 22px; }
+      .section { padding: 32px 16px; }
+      .cta-accept { font-size: 18px; padding: 18px 24px; }
+      .testimonial { flex-direction: column; align-items: center; text-align: center; gap: 12px; }
+      .warning-banner { font-size: 13px; padding: 10px 16px; }
+      .comparison-table td { padding: 12px 10px; font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="warning-banner">
+    &#9888; ACHTUNG: Bitte schlie&szlig;e diese Seite NICHT, bis der Vorgang abgeschlossen ist. Das k&ouml;nnte einen Fehler verursachen und deinen Zugang verz&ouml;gern.
+  </div>
+
+  <!-- Section 1 (white) - Congratulations -->
+  <div class="section section--alt">
+    <div class="section__inner">
+      <p class="subtitle">Dein Zugang zu VIGOR MAX wird gerade aktiviert.</p>
+      <h1>HERZLICHEN GL&Uuml;CKWUNSCH ZU DEINEM KAUF!</h1>
+      <p>Du hast dich gerade einer ausgew&auml;hlten Gruppe von M&auml;nnern angeschlossen, die die Wahrheit &uuml;ber Erektionsst&ouml;rungen entdeckt und die Entscheidung getroffen haben, den Doppelten Blocker ein f&uuml;r alle Mal zu beseitigen.</p>
+      <p>Ab jetzt hast du das vollst&auml;ndige Protokoll in der Hand &ndash; mit dem Reaktivierungs-Rezept, den 4 exakten Zutaten, dem 21-Tage-Beschleunigungs-Guide und allem, was du brauchst, um wieder stahlharte Erektionen zu bekommen.</p>
+      <p><strong>Das bedeutet, dass du in wenigen Tagen:</strong></p>
+      <ul class="benefits-list">
+        <li>Sp&uuml;ren wirst, wie dein Schwanz mit einer Kraft hart wird, die du seit Jahren nicht mehr gesp&uuml;rt hast.</li>
+        <li>Jeden Morgen mit festen und potenten Erektionen aufwachen wirst.</li>
+        <li>Erleben wirst, wie das Verlangen mit einer Intensit&auml;t zur&uuml;ckkommt, die dich &uuml;berraschen wird.</li>
+      </ul>
+      <p>Mit VIGOR MAX hast du endlich die eigentliche Ursache des Problems angegriffen. Deine Leydig-Zellen werden gereinigt, deine Penisgef&auml;&szlig;e werden freigemacht und dein Testosteron wird auf ein Niveau schie&szlig;en, das du wahrscheinlich seit deinen 20ern nicht mehr gesp&uuml;rt hast.</p>
+      <p>Und genau hier muss ich ehrlich mit dir sein.</p>
+      <p>Denn was ich dir jetzt sage, mag seltsam klingen. Aber es ist eine medizinische Tatsache, die jeder Urologe kennt &ndash; und die dir keiner von ihnen verr&auml;t.</p>
+    </div>
+  </div>
+
+  <!-- Section 2 (dark) - The Question -->
+  <div class="section">
+    <div class="section__inner">
+      <h2>Lass mich dir eine wichtige Frage stellen:</h2>
+      <p>Jetzt, wo deine Erektionen mit voller Kraft zur&uuml;ckkommen werden und dein Testosteron auf ein extrem hohes Niveau explodieren wird &ndash; <strong>bist du vorbereitet auf das, was DAMIT einhergeht?</strong></p>
+      <p>Schau, VIGOR MAX ist AUSSERGEWÖHNLICH. Es wird deinen Schwanz so hart machen wie nie zuvor. Es wird diese animalische Potenz zur&uuml;ckbringen. Es wird dich wieder wie ein richtiger Mann f&uuml;hlen lassen.</p>
+      <p><strong>Aber da gibt es eine Sache, vor der ich dich warnen muss.</strong></p>
+      <p>Wenn dein Testosteron so in die H&ouml;he schie&szlig;t, wenn deine Penisgef&auml;&szlig;e sauber sind und das Blut mit voller Kraft in deinen Penis str&ouml;mt, passiert etwas mit deinem K&ouml;rper:</p>
+      <p style="text-align:center; font-size:24px; font-weight:700;">Er wird EXTREM empfindlich.</p>
+    </div>
+  </div>
+
+  <!-- Section 3 (white) - The Problem -->
+  <div class="section section--alt">
+    <div class="section__inner">
+      <h2>Und das bedeutet:</h2>
+      <ul class="benefits-list">
+        <li>Dein Schwanz wird schneller hart als je zuvor.</li>
+        <li>Deine Erregung steigt in einer Geschwindigkeit, die du nicht gewohnt bist.</li>
+        <li>Dein K&ouml;rper reagiert auf weibliche Ber&uuml;hrung mit einer brutalen Intensit&auml;t.</li>
+        <li>Und die Lust beim Sex wird so stark, so &uuml;berw&auml;ltigend sein, dass dein K&ouml;rper innerhalb von Minuten explodieren will.</li>
+      </ul>
+      <p><strong>Mit anderen Worten: Du wirst SCHNELL kommen.</strong></p>
+      <p>Nicht weil etwas falsch ist. Sondern genau weil ALLES funktioniert. Deine gesamte Sexualmaschine wurde auf einen Schlag reaktiviert. Harter Schwanz, hohes Testosteron, maximale Empfindlichkeit, Blut, das mit vollem Druck pumpt.</p>
+      <p>Es ist, als h&auml;ttest du einen Ferrari-Motor nach Jahren wieder gestartet. Er beschleunigt in Sekunden von null auf hundert. Das ist PURE KRAFT. Aber ohne Kontrolle arbeitet diese Kraft GEGEN dich.</p>
+    </div>
+  </div>
+
+  <!-- Section 4 (dark) - The Real Question -->
+  <div class="section">
+    <div class="section__inner">
+      <h2>Was bringt dir der h&auml;rteste Schwanz deines Lebens, wenn du nach 3 Minuten kommst?</h2>
+      <p>Was bringt dir die Erektion eines Stiers, wenn deine Frau kaum etwas gesp&uuml;rt hat, bevor du fertig warst?</p>
+      <p>Was bringt es dir, deine gesamte sexuelle Potenz zur&uuml;ckzugewinnen, wenn sie daneben liegt, frustriert, und so tut, als w&auml;re es gut gewesen?</p>
+      <p>Ich habe hunderte M&auml;nner gesehen, die VIGOR MAX benutzt haben. Sie waren begeistert von den Ergebnissen. Schwanz in Minuten hart, morgendliche Erektionen kamen zur&uuml;ck, sexuelles Verlangen explodierte.</p>
+      <p>Aber als es dann darum ging, diese Erektion wirklich mit der Partnerin zu NUTZEN, hielten sie zwei, drei, maximal f&uuml;nf Minuten durch. Und pl&ouml;tzlich wurde die Nacht, die unvergesslich h&auml;tte werden sollen, zur n&auml;chsten Entt&auml;uschung.</p>
+      <p>Nicht wegen fehlender Erektion. Sondern wegen fehlender <strong>KONTROLLE</strong>.</p>
+      <p>Weil immer dieses Gef&uuml;hl bleibt:</p>
+      <p><em>&bdquo;Ich war so hart, so potent&hellip; Warum bin ich so schnell gekommen?&ldquo;</em></p>
+      <p><em>&bdquo;Sie fing gerade an zu st&ouml;hnen und ich konnte schon nicht mehr.&ldquo;</em></p>
+      <p><em>&bdquo;H&auml;tte ich nur 20 Minuten l&auml;nger durchgehalten, h&auml;tte sie um mehr gebettelt.&ldquo;</em></p>
+      <p>Und pl&ouml;tzlich wird aus der Unsicherheit wegen der Erektion eine Unsicherheit wegen der Ausdauer. Das Problem &auml;ndert sich. Aber die Scham ist DIESELBE.</p>
+    </div>
+  </div>
+
+  <!-- Section 5 (white) - Vigor Max Limitation -->
+  <div class="section section--alt">
+    <div class="section__inner">
+      <p>Versteh mich nicht falsch &ndash; VIGOR MAX ist AUSSERGEWÖHNLICH.</p>
+      <p>Es ist das wirkungsvollste Protokoll, das es gibt, um Erektionsst&ouml;rungen zu beseitigen und deine sexuelle Potenz wiederherzustellen. Aber es wurde nicht daf&uuml;r entwickelt, dir beizubringen, diese Potenz zu <strong>KONTROLLIEREN</strong>.</p>
+      <p>Es gibt dir die Erektion, steigert dein Testosteron und dein Verlangen. Aber du musst noch wissen, was du mit ALL DEM anf&auml;ngst, wenn du in ihr drin bist.</p>
+
+      <h2>Wenn du der Typ Mann bist, der:</h2>
+      <ul class="benefits-list">
+        <li>Bereits eine nat&uuml;rliche Kontrolle &uuml;ber die Ejakulation hat</li>
+        <li>Beim Sex den Rhythmus halten kann, ohne 30 Minuten oder l&auml;nger zu kommen</li>
+        <li>Genau wei&szlig;, wie er die Lust bremst, wenn sie sich der Grenze n&auml;hert</li>
+        <li>Seinen Point of no Return komplett unter Kontrolle hat</li>
+      </ul>
+      <p><strong>Dann ist VIGOR MAX allein PERFEKT f&uuml;r dich.</strong></p>
+
+      <hr class="separator">
+
+      <p>Aber wenn du der Typ bist, der:</p>
+      <ul class="negative-list">
+        <li>Wei&szlig;, dass er schneller kommt, als er m&ouml;chte</li>
+        <li>Schon versucht hat, beim Sex an etwas anderes zu denken, um sich zur&uuml;ckzuhalten (und es hat nicht funktioniert)</li>
+        <li>Das Gef&uuml;hl hat, die Kontrolle zu verlieren, wenn die Lust zu intensiv wird</li>
+        <li>Lang genug durchhalten will, um seine Frau in den Wahnsinn zu treiben, bevor er kommt</li>
+      </ul>
+      <p><strong>Dann MUSST du sehen, was ich dir gleich anbieten werde.</strong></p>
+    </div>
+  </div>
+
+  <!-- Section 6 (dark) - Introducing TOTALE KONTROLLE -->
+  <div class="section">
+    <div class="section__inner">
+      <h1>Jetzt neu: TOTALE KONTROLLE &mdash; Die Methode der Pornodarsteller f&uuml;r unbegrenzte Ausdauer.</h1>
+      <p>Hast du dich jemals gefragt, wie Pornodarsteller 45 Minuten, eine Stunde durchhalten &ndash; mit voller Erektion &ndash; und erst kommen, wenn sie es wollen? Es ist keine Genetik, kein bet&auml;ubendes Gel und kein Viagra.</p>
+      <p>Es ist eine <strong>5-Minuten-&Uuml;bung am Tag</strong>, die den einzigen Muskel im m&auml;nnlichen K&ouml;rper st&auml;rkt, der die Ejakulation stoppen kann. Der kaum bekannte Muskel namens <strong>Pubococcygeus</strong> &ndash; oder wie ich ihn gerne nenne: der <strong>PC-Muskel</strong>.</p>
+      <p>Dieser Muskel funktioniert wie die BREMSE deines Penis. Wenn er stark ist, entscheidest DU, wann du kommst. Wenn er schwach ist, entscheidet dein K&ouml;rper f&uuml;r dich.</p>
+      <p>Bei den meisten M&auml;nnern ist dieser Muskel komplett verk&uuml;mmert. Deshalb kommen sie schnell. Pornodarsteller trainieren diesen Muskel jeden Tag. Deshalb halten sie durch, so lange sie wollen.</p>
+    </div>
+  </div>
+
+  <!-- Section 7 (white) - How It Works -->
+  <div class="section section--alt">
+    <div class="section__inner">
+      <h2>Und das Beste daran: Es ist l&auml;cherlich einfach.</h2>
+      <p>Du brauchst nur <strong>5 Minuten am Tag</strong>. Im Sitzen, im Liegen oder im Stehen. Beim Fernsehen, im B&uuml;ro, vor dem Schlafengehen. Niemand merkt, dass du es machst. Du brauchst kein Equipment, du musst nirgendwohin gehen.</p>
+      <p><strong>Du musst einfach nur in der richtigen Reihenfolge, mit der richtigen Frequenz und auf die richtige Art anspannen und entspannen.</strong></p>
+      <p>Nach 2 Tagen sp&uuml;rst du schon den Unterschied. In dem Moment, in dem du normalerweise die Kontrolle verlieren w&uuml;rdest, merkst du, dass du HALTEN kannst. Nicht mit dem Kopf. Mit dem MUSKEL.</p>
+      <p>Nach 6 bis 8 Tagen wird die Kontrolle automatisch. Dein K&ouml;rper hat es gelernt. Der Muskel bremst von alleine, wenn die Lust den H&ouml;hepunkt erreicht. Ohne Anstrengung. Ohne an deine Schwiegermutter zu denken. Ohne Spray, das deinen Schwanz bet&auml;ubt.</p>
+      <p><strong>Du v&ouml;gelst einfach so lange du willst und kommst genau dann, wenn DU es entscheidest.</strong></p>
+      <p>Das ist es, was dir TOTALE KONTROLLE liefert:</p>
+      <p>Das vollst&auml;ndige Protokoll mit der exakten &Uuml;bungsabfolge, den Anspannungszeiten, dem w&ouml;chentlichen Fortschritt und allem, was du brauchst, um den PC-Muskel in eine Kontrollmaschine zu verwandeln.</p>
+      <p>Dieselbe Methode, die von Profis der Erwachsenenbranche verwendet wird. Angepasst f&uuml;r jeden Mann, in jedem Alter, in jeder k&ouml;rperlichen Verfassung.</p>
+    </div>
+  </div>
+
+  <!-- Section 8 (dark) - Warning -->
+  <div class="section">
+    <div class="section__inner">
+      <h2>Aber ich muss dich ehrlich warnen: &Uuml;bertreib es nicht.</h2>
+      <p>Einige M&auml;nner, die das Protokoll befolgt haben, waren so begeistert von den Ergebnissen, dass sie mehr trainiert haben als empfohlen. Und wei&szlig;t du, was passiert ist?</p>
+      <p>Der Muskel wurde SO stark, dass sie Schwierigkeiten hatten zu kommen. Sie mussten sich richtig anstrengen, um den Orgasmus loszulassen. Die Partnerin hatte schon drei, vier Orgasmen gehabt und sie waren immer noch da &ndash; hart, fest, ohne es zu Ende bringen zu k&ouml;nnen.</p>
+      <p>Deshalb hat das Protokoll bestimmte Zeiten und Grenzen f&uuml;r jede Woche. Halte dich genau an das, was im Programm steht. Nicht mehr und nicht weniger. Das Ziel ist, dir KONTROLLE zu geben &ndash; nicht dich in eine Maschine zu verwandeln, die nicht abschaltet.</p>
+      <p>Du willst den Zeitpunkt w&auml;hlen, wann du kommst &ndash; nicht darum k&auml;mpfen m&uuml;ssen, es &uuml;berhaupt zu schaffen. Also folge der Schritt-f&uuml;r-Schritt-Anleitung genau so, wie sie ist, und du wirst die perfekte Balance haben: So lange durchhalten, wie du willst, und mit der explosivsten Intensit&auml;t deines Lebens kommen, wenn du entscheidest, dass es soweit ist.</p>
+    </div>
+  </div>
+
+  <!-- Section 9 (white) - Comparison Table -->
+  <div class="section section--alt">
+    <div class="section__inner">
+      <h1>Mit Vigor Max + TOTALE KONTROLLE</h1>
+      <table class="comparison-table">
+        <tr>
+          <td>Dein Schwanz wird stahlhart. &#10004;</td>
+          <td>Deine Frau hat multiple Orgasmen, bevor du fertig bist. &#10004;</td>
+        </tr>
+        <tr>
+          <td>Du h&auml;ltst 30, 45, 60 Minuten oder l&auml;nger durch. &#10004;</td>
+          <td>Und du KONTROLLIERST genau, wann du kommst. &#10004;</td>
+        </tr>
+        <tr>
+          <td>Dein Testosteron explodiert. &#10004;</td>
+          <td>Null Frust, null Scham, absolute Kontrolle. &#10004;</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Section 10 (dark) - Pricing -->
+  <div class="section">
+    <div class="section__inner">
+      <h2>Warum dieses Angebot JETZT oder NIE ist</h2>
+      <p>Schau, ich k&ouml;nnte problemlos 67 Euro f&uuml;r TOTALE KONTROLLE verlangen.</p>
+      <p>M&auml;nner geben mehr als das f&uuml;r Sprays, verz&ouml;gernde Kondome und Therapien aus, die nichts bringen. Weil nichts davon den Muskel st&auml;rkt, der die Ejakulation wirklich kontrolliert.</p>
+      <p>TOTALE KONTROLLE ist die einzige L&ouml;sung, die direkt an der Ursache ansetzt. Und dir dauerhafte Kontrolle gibt.</p>
+      <p>Aber weil du gerade VIGOR MAX dein Vertrauen geschenkt und den wichtigsten Schritt deines Sexuallebens gemacht hast, biete ich dir einen <strong>Einf&uuml;hrungspreis</strong> an, den es nur HIER und JETZT gibt.</p>
+      <p>Es sind nicht die &uuml;blichen 67 Euro.</p>
+      <p>Es ist ein Sonderpreis, der nur auf dieser Seite verf&uuml;gbar ist, in diesem Moment, f&uuml;r M&auml;nner, die gerade VIGOR MAX erworben haben.</p>
+      <p>Weil diese Methode in Zusammenarbeit mit einem der gr&ouml;&szlig;ten Spezialisten f&uuml;r m&auml;nnliche sexuelle Performance in Europa entwickelt wurde. Und er hat mir erlaubt, sie zu diesem Preis nur f&uuml;r die ersten Nutzer von VIGOR MAX anzubieten.</p>
+      <p>Aber in dem Moment, in dem du diese Seite verl&auml;sst oder versuchst, sp&auml;ter zu kaufen, zahlst du den vollen Preis. Und schick mir danach keine E-Mail mit der Frage, ob der Sonderpreis noch verf&uuml;gbar ist.</p>
+      <p><strong>Das wird er nicht sein. Die Entscheidung ist JETZT.</strong></p>
+    </div>
+  </div>
+
+  <!-- Section 11 (white) - Options + CTA -->
+  <div class="section section--alt">
+    <div class="section__inner">
+      <h2>Du hast zwei Optionen:</h2>
+
+      <h2>Option 1: Nur VIGOR MAX behalten</h2>
+      <ul class="benefits-list">
+        <li>Zugang zum vollst&auml;ndigen Protokoll</li>
+        <li>Reaktivierungs-Rezept mit den 4 Zutaten</li>
+        <li>21-Tage-Guide</li>
+        <li>Harte und potente Erektionen</li>
+      </ul>
+      <ul class="negative-list">
+        <li>Aber OHNE Kontrolle &uuml;ber die Ejakulation.</li>
+        <li>Echtes Risiko, wegen des hohen Testosterons schnell zu kommen.</li>
+        <li>Frust im Bett, trotz hartem Schwanz.</li>
+        <li>Deine Frau sp&uuml;rt zwar den harten Schwanz, aber nicht genug Lust, bevor du fertig bist.</li>
+      </ul>
+
+      <hr class="separator">
+
+      <h2><span class="star">&#11088;</span> Option 2: VIGOR MAX + TOTALE KONTROLLE</h2>
+      <ul class="benefits-list">
+        <li>Harter Schwanz</li>
+        <li>Unbegrenzte Ausdauer</li>
+        <li>Absolute Kontrolle</li>
+        <li>5 Minuten am Tag, Ergebnisse f&uuml;rs ganze Leben</li>
+        <li>Deine Frau hat multiple Orgasmen</li>
+        <li>Totales Selbstvertrauen im Bett</li>
+      </ul>
+
+      <div class="highlight-box">
+        <p><strong>VIGOR MAX gibt dir die POTENZ.<br>TOTALE KONTROLLE gibt dir die HERRSCHAFT.</strong></p>
+        <p>Zusammen verwandeln sie dich in den Mann, von dem jede Frau tr&auml;umt, ihn im Bett zu haben. Der Mann, der steinhart wird und die ganze Nacht durchh&auml;lt.</p>
+      </div>
+
+      <p style="text-align:center;">Diese Seite ist deine EINZIGE Chance, dir diesen Preis zu sichern. In dem Moment, in dem du sie verl&auml;sst, verlierst du den Zugang zu diesem Sonderangebot.</p>
+      <p style="text-align:center;">Du hast bereits den ersten Schritt gemacht, als du VIGOR MAX erworben hast. Dein Schwanz wird stahlhart werden.</p>
+      <p style="text-align:center;"><strong>Jetzt mach den zweiten Schritt und stell sicher, dass du diese Kraft KONTROLLIERST.</strong></p>
+      <p style="text-align:center;">Denn es gibt nichts Verheerenderes, als eine geladene Waffe zu haben und nicht zu wissen, wie man sie benutzt.</p>
+
+      <div class="cta-section">
+        <button class="cta-accept" data-nexfy-accept>JA! ICH WILL TOTALE KONTROLLE JETZT HINZUF&Uuml;GEN</button>
+        <button class="cta-decline" data-nexfy-decline>Nein danke, ich komme ohne Kontrolle aus.</button>
+      </div>
+      <div class="guarantee">60-Tage-Geld-zur&uuml;ck-Garantie &mdash; Ohne Fragen</div>
+    </div>
+  </div>
+
+  <!-- Section 12 (dark) - Final Push -->
+  <div class="section">
+    <div class="section__inner">
+      <p style="text-align:center; font-size:22px; font-weight:700;">Harter Schwanz. Unbegrenzte Ausdauer. Absolute Kontrolle.</p>
+      <p style="text-align:center; font-size:20px;">Das ist es, was auf dich wartet.</p>
+      <div class="cta-section">
+        <button class="cta-accept" data-nexfy-accept>JA! ICH WILL TOTALE KONTROLLE JETZT HINZUF&Uuml;GEN</button>
+        <button class="cta-decline" data-nexfy-decline>Nein danke, ich komme ohne Kontrolle aus.</button>
+      </div>
+      <div class="guarantee">60-Tage-Geld-zur&uuml;ck-Garantie &mdash; Ohne Fragen</div>
+    </div>
+  </div>
+
+  <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" async defer></script>
+  <script src="https://www.rubuspay.com/upsell-widget.js" defer></script>
+  <script>
+    (function() {
+      history.pushState(null, '', location.href);
+      history.pushState(null, '', location.href);
+      window.addEventListener('popstate', function() {
+        history.pushState(null, '', location.href);
+      });
+    })();
+  </script>
+
+</body>
+</html>
