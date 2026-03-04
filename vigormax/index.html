@@ -530,14 +530,23 @@
     }
 
     /* Digistore24 Trusted Badge - forçar tema escuro */
-    #digistore_badge_container,
-    #digistore_badge_container * {
+    [class*="ds24b-"] {
       background-color: var(--bg) !important;
       color: var(--text-muted) !important;
       border-color: var(--border) !important;
     }
 
-    #digistore_badge_container a {
+    .ds24b-top, .ds24b-bottom {
+      background: var(--bg) !important;
+      border-bottom: 1px solid var(--border) !important;
+      border-top: 1px solid var(--border) !important;
+    }
+
+    .ds24b-text, .ds24b-trust {
+      color: var(--text-secondary) !important;
+    }
+
+    [class*="ds24b-"] a {
       color: var(--text-secondary) !important;
     }
 
