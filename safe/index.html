@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vigor Max - Natural Male Vitality Support</title>
+  <meta name="description" content="Vigor Max is a science-backed digital guide designed to help men naturally support testosterone levels, energy, and overall male vitality.">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #ffffff;
+      color: #191919;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: #0057FF; text-decoration: none; transition: color 0.2s; }
+    a:hover { color: #003fcc; }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    section.alt {
+      background: #f9f9f9;
+    }
+
+    /* ── Typography ── */
+    h1 {
+      font-size: 42px;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.3px;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.35;
+      margin-bottom: 12px;
+    }
+
+    p {
+      margin-bottom: 18px;
+      color: #3a3a3a;
+    }
+
+    .lead {
+      font-size: 19px;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 80px 0 64px;
+      text-align: center;
+    }
+
+    .hero .badge {
+      display: inline-block;
+      background: #e8f5e9;
+      color: #2e7d32;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 28px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .hero .subtitle {
+      font-size: 20px;
+      color: #666;
+      max-width: 560px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+
+    .hero-image-placeholder {
+      width: 100%;
+      max-width: 480px;
+      height: 320px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #f0f4ff 0%, #e8ecf8 100%);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #a0a8c0;
+      font-size: 14px;
+      border: 1px dashed #c8cfe0;
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: #f9f9f9;
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 20px;
+    }
+
+    section.alt .card {
+      background: #ffffff;
+    }
+
+    /* ── Lists ── */
+    .check-list {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0;
+    }
+
+    .check-list li {
+      padding: 10px 0 10px 32px;
+      position: relative;
+      line-height: 1.6;
+      color: #3a3a3a;
+    }
+
+    .check-list li::before {
+      content: "\2713";
+      position: absolute;
+      left: 0;
+      top: 10px;
+      color: #22c55e;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .x-list {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0;
+    }
+
+    .x-list li {
+      padding: 10px 0 10px 32px;
+      position: relative;
+      line-height: 1.6;
+      color: #3a3a3a;
+    }
+
+    .x-list li::before {
+      content: "\2717";
+      position: absolute;
+      left: 0;
+      top: 10px;
+      color: #ef4444;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      border: none;
+      border-top: 1px solid #e5e7eb;
+      margin: 48px 0;
+    }
+
+    /* ── Guarantee Box ── */
+    .guarantee-box {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 12px;
+      padding: 32px;
+      text-align: center;
+      margin: 32px 0;
+    }
+
+    .guarantee-box .shield {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .guarantee-box h3 {
+      color: #166534;
+      margin-bottom: 12px;
+    }
+
+    .guarantee-box p {
+      color: #3a3a3a;
+      margin-bottom: 0;
+    }
+
+    /* ── Offer Box ── */
+    .offer-box {
+      text-align: center;
+      padding: 48px 32px;
+      background: #fafafa;
+      border-radius: 16px;
+      border: 2px solid #e5e7eb;
+      margin: 32px 0;
+    }
+
+    .offer-box .old-price {
+      font-size: 18px;
+      color: #999;
+      text-decoration: line-through;
+      margin-bottom: 4px;
+    }
+
+    .offer-box .price {
+      font-size: 56px;
+      font-weight: 800;
+      color: #191919;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .offer-box .price-note {
+      font-size: 15px;
+      color: #777;
+      margin-bottom: 28px;
+    }
+
+    /* ── CTA Button ── */
+    .cta-btn {
+      display: inline-block;
+      background: #0057FF;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 700;
+      padding: 18px 48px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      text-align: center;
+      letter-spacing: 0.3px;
+      font-family: inherit;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .cta-btn:hover {
+      background: #0046d6;
+      transform: translateY(-1px);
+      color: #ffffff;
+    }
+
+    .cta-btn:active {
+      transform: translateY(0);
+    }
+
+    .cta-note {
+      font-size: 13px;
+      color: #999;
+      margin-top: 12px;
+    }
+
+    /* ── Compliance ── */
+    .compliance {
+      background: #f9f9f9;
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    .compliance p {
+      font-size: 13px;
+      color: #999;
+      line-height: 1.7;
+      max-width: 640px;
+      margin: 0 auto 12px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: #191919;
+      color: #888;
+      padding: 40px 0;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    footer .footer-links {
+      margin-bottom: 16px;
+    }
+
+    footer .footer-links a {
+      color: #aaa;
+      margin: 0 12px;
+      transition: color 0.2s;
+    }
+
+    footer .footer-links a:hover {
+      color: #fff;
+    }
+
+    footer .footer-links span {
+      color: #555;
+    }
+
+    footer .copyright {
+      color: #666;
+      font-size: 13px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      body { font-size: 16px; }
+      h1 { font-size: 32px; }
+      .hero h1 { font-size: 34px; }
+      h2 { font-size: 24px; }
+      section { padding: 48px 0; }
+      .hero { padding: 56px 0 40px; }
+      .hero .subtitle { font-size: 17px; }
+      .container { padding: 0 20px; }
+      .card { padding: 24px; }
+      .offer-box { padding: 32px 20px; }
+      .offer-box .price { font-size: 44px; }
+      .cta-btn { font-size: 16px; padding: 16px 32px; }
+      .hero-image-placeholder { height: 220px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════ HERO ═══════ -->
+  <section class="hero">
+    <div class="container">
+      <span class="badge">Science-Backed Natural Approach</span>
+      <h1>Vigor Max</h1>
+      <p class="subtitle">A step-by-step digital guide designed to help men naturally support testosterone levels, energy, and overall male vitality.</p>
+
+      <!-- imagem GPT -->
+      <div class="hero-image-placeholder">[ Product Image ]</div>
+    </div>
+  </section>
+
+  <!-- ═══════ WHO IS THIS FOR ═══════ -->
+  <section class="alt">
+    <div class="container">
+      <h2>Who Is Vigor Max For?</h2>
+      <p class="lead">Vigor Max was created for men who want to take a natural, proactive approach to supporting their vitality and well-being.</p>
+
+      <ul class="check-list">
+        <li>Men over 35 who feel their energy and drive have declined over the years</li>
+        <li>Men who want to support healthy testosterone levels naturally, without synthetic interventions</li>
+        <li>Men looking for a simple daily protocol they can follow at home</li>
+        <li>Men who are tired of generic advice and want a structured, actionable plan</li>
+        <li>Men who want to feel more confident, energized, and in control of their health</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ═══════ WHAT IT IS ═══════ -->
+  <section>
+    <div class="container">
+      <h2>What Is Vigor Max?</h2>
+      <p>Vigor Max is a comprehensive digital guide that combines research-backed nutritional strategies with simple lifestyle adjustments to help men naturally support their vitality.</p>
+
+      <div class="card">
+        <h3>Inside the Guide</h3>
+        <ul class="check-list">
+          <li><strong>The Reactivation Recipe</strong> &mdash; A specific combination of 4 natural ingredients formulated to support male hormone balance</li>
+          <li><strong>21-Day Acceleration Guide</strong> &mdash; A day-by-day protocol designed to help you build momentum and see potential changes quickly</li>
+          <li><strong>Lifestyle Optimization Tips</strong> &mdash; Simple adjustments to sleep, movement, and stress management that can amplify your results</li>
+          <li><strong>Nutritional Roadmap</strong> &mdash; Foods that may help support testosterone production and overall male health</li>
+        </ul>
+      </div>
+
+      <p>Everything is delivered digitally for instant access. You can start the protocol today, from the comfort of your home.</p>
+    </div>
+  </section>
+
+  <!-- ═══════ WHY OTHER METHODS MAY NOT WORK ═══════ -->
+  <section class="alt">
+    <div class="container">
+      <h2>Why Other Methods May Not Work</h2>
+      <p>Many men have tried various approaches to improve their vitality &mdash; but most solutions only address symptoms, not root causes.</p>
+
+      <ul class="x-list">
+        <li><strong>Quick-fix supplements</strong> often contain low-quality ingredients with questionable efficacy and little scientific backing</li>
+        <li><strong>Generic fitness programs</strong> rarely account for hormonal health and may not target the specific factors that affect male vitality</li>
+        <li><strong>Prescription medications</strong> may come with side effects and do not address the underlying lifestyle and nutritional factors</li>
+        <li><strong>Internet advice</strong> is often contradictory, unstructured, and lacks a clear step-by-step protocol you can actually follow</li>
+      </ul>
+
+      <div class="card">
+        <p style="margin-bottom: 0; text-align: center;"><strong>Vigor Max takes a different approach:</strong> instead of masking symptoms, it focuses on supporting the body's own natural mechanisms through targeted nutrition and lifestyle strategies.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ POSSIBLE BENEFITS ═══════ -->
+  <section>
+    <div class="container">
+      <h2>Possible Benefits</h2>
+      <p>When you follow the Vigor Max protocol consistently, you may experience:</p>
+
+      <div class="card">
+        <ul class="check-list">
+          <li>Support for healthy testosterone levels through natural ingredients</li>
+          <li>Improved daily energy and reduced feelings of fatigue</li>
+          <li>Enhanced mental clarity and focus throughout the day</li>
+          <li>Support for healthy male performance and confidence</li>
+          <li>Better sleep quality and morning vitality</li>
+          <li>A structured, easy-to-follow daily routine that fits any lifestyle</li>
+        </ul>
+      </div>
+
+      <p style="font-size: 13px; color: #999;"><em>*Individual results may vary. This product is an educational digital guide and does not provide medical advice, diagnosis, or treatment. Consult with a healthcare professional before starting any new health program.</em></p>
+    </div>
+  </section>
+
+  <!-- ═══════ GUARANTEE ═══════ -->
+  <section class="alt">
+    <div class="container">
+      <div class="guarantee-box">
+        <div class="shield">&#128737;</div>
+        <h3>60-Day Money-Back Guarantee</h3>
+        <p>Try Vigor Max completely risk-free. If you are not satisfied for any reason within 60 days of your purchase, simply contact us for a full refund. No questions asked. Your investment is fully protected.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ OFFER ═══════ -->
+  <section>
+    <div class="container">
+      <div class="offer-box">
+        <h2>Get Vigor Max Today</h2>
+        <p class="old-price">Regular Price: $97</p>
+        <div class="price">$49</div>
+        <p class="price-note">One-time payment &middot; Instant digital access &middot; 60-day guarantee</p>
+        <a href="#" class="cta-btn">Buy Now &mdash; Instant Access</a>
+        <p class="cta-note">Secure payment processed by Digistore24</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ COMPLIANCE ═══════ -->
+  <div class="compliance">
+    <div class="container">
+      <p>Vigor Max is an educational digital guide focused on general wellness habits. It does not provide medical advice, diagnosis, or treatment. Individual results may vary. Statements on this page have not been evaluated by the FDA or any regulatory body. This product is not intended to diagnose, treat, cure, or prevent any disease. Always consult a healthcare professional before starting any new health program.</p>
+      <p>Payments are securely processed by Digistore24 GmbH, our authorized reseller and payment provider.</p>
+    </div>
+  </div>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="../privacy-policy/">Privacy Policy</a>
+        <span>&middot;</span>
+        <a href="../refund-policy/">Refund Policy</a>
+        <span>&middot;</span>
+        <a href="../terms-of-use/">Terms of Use</a>
+        <span>&middot;</span>
+        <a href="../contact/">Contact</a>
+      </div>
+      <p class="copyright">&copy; 2026 Vigor Max. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" async defer></script>
+</body>
+</html>
